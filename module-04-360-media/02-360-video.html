@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -6,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>360 Degree Video</title>
+    <title>My 360 VR Video</title>
 
     <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
 
@@ -31,7 +32,7 @@
 
 <body>
 
-    <!-- Video controls -->
+    <!-- Video Controls -->
     <div id="videoControls">
 
         <button id="playButton">
@@ -45,10 +46,10 @@
     </div>
 
 
-    <!-- A-Frame scene -->
+    <!-- A-Frame Scene -->
     <a-scene>
 
-        <!-- Assets -->
+        <!-- Video Assets -->
         <a-assets>
 
             <video
@@ -56,14 +57,17 @@
                 src="../assets/videos/360-video-123.mp4"
                 loop
                 playsinline
-                webkit-playsinline>
+                webkit-playsinline
+                preload="auto">
             </video>
 
         </a-assets>
 
 
-        <!-- 360 degree video -->
-        <a-videosphere src="#video360">
+        <!-- 360 Degree Video -->
+        <a-videosphere
+            src="#video360"
+            rotation="0 -90 0">
         </a-videosphere>
 
 
@@ -77,27 +81,24 @@
     </a-scene>
 
 
-    <!-- Video interaction -->
+    <!-- Video Interaction -->
     <script>
 
         // Get the video
-        const video =
-            document.querySelector('#video360');
+        const video = document.querySelector('#video360');
 
 
         // Get buttons
-        const playButton =
-            document.querySelector('#playButton');
+        const playButton = document.querySelector('#playButton');
 
-        const pauseButton =
-            document.querySelector('#pauseButton');
+        const pauseButton = document.querySelector('#pauseButton');
 
 
         // Play video
         playButton.addEventListener('click', () => {
 
             video.play().catch(error => {
-                console.error("Video playback failed:", error);
+                console.error("Video playback error:", error);
             });
 
         });
@@ -115,5 +116,6 @@
 </body>
 
 </html>
+
 
 
