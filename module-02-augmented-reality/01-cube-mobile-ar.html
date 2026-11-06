@@ -1,0 +1,101 @@
+
+<!--
+==================================================
+MOBILE AR WITH A-FRAME - STUDENT INSTRUCTIONS
+==================================================
+
+STEP 1: SAVE YOUR FILE
+- Open your project folder in VS Code.
+- Save this file as: 01-cube-mobile-ar.html
+- Make sure it is inside your GitHub repository folder.
+
+
+STEP 2: UPLOAD YOUR FILE TO GITHUB
+- In VS Code, select Terminal → New Terminal.
+- Enter these commands one by one:
+
+  git status
+  git add 01-cube-mobile-ar.html
+  git commit -m "Add first mobile AR example"
+  git push
+
+- Open your GitHub repository.
+- Check that the HTML file has been uploaded.
+
+
+STEP 3: ENABLE GITHUB PAGES
+(Only required the first time)
+
+- Open your repository on github.com.
+- Go to Settings → Pages.
+- Under Build and deployment, select:
+
+  Source: Deploy from a branch
+  Branch: main
+  Folder: / (root)
+
+- Click Save.
+- GitHub will publish your webpage online.
+
+
+STEP 4: OPEN THE PAGE ON YOUR PHONE
+- Open Chrome on your Android phone.
+- Enter your GitHub Pages URL.
+
+  Example:
+  https://USERNAME.github.io/REPOSITORY/
+  01-cube-mobile-ar.html
+
+- Check whether the cube appears.
+- Look for an Enter AR or Enter VR button.
+
+
+STEP 5: IF THE AR BUTTON IS MISSING
+- In Chrome, type: chrome://flags
+- Search for: WebXR
+- Find WebXR Incubations (if available).
+- Change Default to Enabled.
+- Tap Relaunch to restart Chrome.
+
+
+STEP 6: TEST AGAIN
+- Open your GitHub Pages URL again.
+- Check whether Enter AR is available.
+- If only VR appears, your browser or phone
+  may not support WebXR AR.
+
+NOTE:
+- Use an ARCore-compatible Android phone.
+- Chrome and Google Play Services for AR
+  should be up to date.
+- Not all Android phones support WebXR AR.
+
+==================================================
+END OF INSTRUCTIONS
+==================================================
+-->
+
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+</head>
+
+<body>
+
+    <a-scene webxr="optionalFeatures: hit-test;" xr-mode-ui="XRMode: ar" background="color: #ECECEC">
+
+        <a-box id="cube" position="0 0 -2" width="0.2" height="0.2" depth="0.2" color="tomato">
+        </a-box>
+
+    </a-scene>
+
+</body>
+
+</html>

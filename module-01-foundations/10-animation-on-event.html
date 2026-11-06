@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+
+    <script>
+        AFRAME.registerComponent('toggle-animation', {
+            schema: {
+                property: { type: 'string', default: 'position' },
+                to: { type: 'string', default: '0 3 -5' },
+                dur: { type: 'number', default: 2000 },
+                dir: { type: 'string', default: 'alternate' },
+                loop: { type: 'boolean', default: true },
+                easing: { type: 'string', default: 'easeInOutSine' }
+            },
+
+            init: function () {
+                this.isAnimating = false;
+
+                this.el.addEventListener('click', () => {
+                    if (!this.isAnimating) {
+                        this.el.setAttribute('animation', {
+                            property: this.data.property,
+                            to: this.data.to,
+                            dur: this.data.dur,
+                            dir: this.data.dir,
+                            loop: this.data.loop,
+                            easing: this.data.easing
+                        });
+                        this.isAnimating = true;
+                    } else {
+                        this.el.removeAttribute('animation');
+                        this.isAnimating = false;
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <a-scene>
+
+        <!-- Camera + mouse cursor -->
+        <a-entity camera position="0 1.6 0" look-controls wasd-controls cursor="rayOrigin: mouse" raycaster="objects: .clickable">
+        </a-entity>
+
+        <!-- Title -->
+        <a-text value="Click any object to start / stop animation" position="-3 4 -6" color="black" width="8">
+        </a-text>
+
+        <!-- 1. Sphere: position animation -->
+        <a-sphere class="clickable" position="-2 1.5 -6" radius="0.8" color="red" toggle-animation="
+                property: position;
+                to: -2 4 -6;
+                dur: 2000;
+                dir: alternate;
+                loop: true">
+        </a-sphere>
+
+        <!-- 2. Box: rotation animation -->
+        <a-box class="clickable" position="0 1.5 -8" color="blue" toggle-animation="
+                property: rotation;
+                to: 0 360 0;
+                dur: 2500;
+                dir: normal;
+                loop: true;
+                easing: linear">
+        </a-box>
+
+        <!-- 3. Cylinder: scale animation -->
+        <a-cylinder class="clickable" position="2 1.5 -9" radius="0.6" height="1.5" color="brown" toggle-animation="
+                property: scale;
+                to: 1.5 1.5 1.5;
+                dur: 1500;
+                dir: alternate;
+                loop: true">
+        </a-cylinder>
+
+        <a-entity environment="preset: forest; dressingAmount: 500">
+        </a-entity>
+
+    </a-scene>
+</body>
+
+</html>

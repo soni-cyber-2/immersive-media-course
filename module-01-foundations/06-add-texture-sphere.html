@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+</head>
+
+<body>
+
+    <a-scene>
+
+        <a-assets>
+            <video id="video-360" src="https://cdn.aframe.io/360-video-boilerplate/video/city.mp4" loop muted playsinline crossorigin="anonymous">
+            </video>
+        </a-assets>
+
+        <a-sphere src="#video-360" position="0 2 -10" rotation="0 0 0" scale="2 2 2"></a-sphere>
+
+        <a-entity environment="preset: forest; dressingAmount: 500"></a-entity>
+
+
+    </a-scene>
+
+    <script>
+        const video = document.querySelector('#video-360');
+
+        document.addEventListener('click', () => {
+            video.play();
+        });
+    </script>
+
+</body>
+
+</html>

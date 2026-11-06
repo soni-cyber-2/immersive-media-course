@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+</head>
+
+<body>
+
+    <a-scene>
+
+        <a-assets>
+            <img id="cubeTexture" src="../assets/images/checkerboard.jpg">
+        </a-assets>
+
+        <!-- Textured cube -->
+        <a-box position="0 2 -10" rotation="40 20 0" scale="2 2 2" src="#cubeTexture"></a-box>
+
+
+        <!-- Environment -->
+        <a-entity environment="preset: forest; dressingAmount: 500"> </a-entity>
+
+
+    </a-scene>
+
+</body>
+
+</html>

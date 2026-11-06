@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+
+        <a-assets>
+            <audio id="backgroundSound" src="https://cdn.aframe.io/basic-guide/audio/backgroundnoise.wav"></audio>
+        </a-assets>
+
+        <a-sphere position="0 1.5 -5" radius="1" color="red"> </a-sphere>
+
+        <!-- Background audio -->
+        <a-entity id="soundPlayer" sound="
+            src: #backgroundSound;
+            loop: true;
+            volume: 0.5">
+        </a-entity>
+
+        <a-entity environment="preset: forest; dressingAmount: 500"> </a-entity>
+
+        <script>
+            const soundPlayer = document.querySelector("#soundPlayer");
+
+            document.addEventListener(
+                "click",
+                () => {
+                    soundPlayer.components.sound.playSound();
+                },
+                {
+                    once: true,
+                },
+            );
+        </script>
+
+    </a-scene>
+</body>
+
+</html>

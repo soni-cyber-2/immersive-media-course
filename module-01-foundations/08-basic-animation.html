@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-environment-component@1.5.x/dist/aframe-environment-component.min.js"></script>
+</head>
+
+<body>
+    <a-scene>
+        <a-sphere position="0 1.5 -5" scale="0.5 0.5 0.5" radius="1" color="red" animation="
+                property: position;
+                to: 0 4 -5;
+                dur: 2000;
+                dir: alternate;
+                loop: true">
+        </a-sphere>
+
+        <a-entity environment=" preset: forest; dressingAmount: 500"></a-entity>
+
+    </a-scene>
+</body>
+
+</html>

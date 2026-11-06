@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://aframe.io/releases/1.8.0/aframe.min.js"></script>
+
+    <style>
+        #videoControls {
+            position: fixed;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+
+        #videoControls button {
+            padding: 12px 20px;
+            font-size: 18px;
+            margin: 5px;
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- Video controls -->
+    <div id="videoControls">
+
+        <button id="playButton">
+            Play
+        </button>
+
+        <button id="pauseButton">
+            Pause
+        </button>
+
+    </div>
+
+
+    <!-- A-Frame scene -->
+    <a-scene>
+
+        <!-- Assets -->
+        <a-assets>
+
+            <video id="video360" src="../assets/videos/skii-360-video.mp4" loop playsinline webkit-playsinline>
+            </video>
+
+        </a-assets>
+
+
+        <!-- 360 video -->
+        <a-videosphere src="#video360">
+        </a-videosphere>
+
+
+        <!-- Camera -->
+        <a-camera look-controls="
+                touchEnabled: true;
+                magicWindowTrackingEnabled: true">
+        </a-camera>
+
+    </a-scene>
+
+
+    <!-- Video interaction -->
+    <script>
+
+        // Get the video
+        const video =
+            document.querySelector('#video360');
+
+
+        // Get buttons
+        const playButton =
+            document.querySelector('#playButton');
+
+        const pauseButton =
+            document.querySelector('#pauseButton');
+
+
+        // Play video
+        playButton.addEventListener('click', () => {
+
+            video.play();
+
+        });
+
+
+        // Pause video
+        pauseButton.addEventListener('click', () => {
+
+            video.pause();
+
+        });
+
+    </script>
+
+</body>
+
+</html>
